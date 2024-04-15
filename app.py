@@ -1,20 +1,34 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, abort
 
 app = Flask(__name__)
 
-
 tasks = []
 
+# Routes for CRUD operations
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
-    return jsonify(tasks)
+    # Retrieve all tasks
+    pass
 
 @app.route('/tasks', methods=['POST'])
 def add_task():
-    data = request.get_json()
-    task = {'id': len(tasks) + 1, 'text': data['text'], 'completed': False}
-    tasks.append(task)
-    return jsonify(task), 201
+    # Add a new task
+    pass
+
+@app.route('/tasks/<int:id>', methods=['GET'])
+def get_task(id):
+    # Retrieve a specific task by ID
+    pass
+
+@app.route('/tasks/<int:id>', methods=['PUT'])
+def update_task(id):
+    # Update a specific task by ID
+    pass
+
+@app.route('/tasks/<int:id>', methods=['DELETE'])
+def delete_task(id):
+    # Delete a specific task by ID
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
